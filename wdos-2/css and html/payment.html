@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Order Confirmation</title>
+    <style>
+        /* CSS styles for the payment page */
+        /* ... (your payment page styles here) ... */
+
+/* Global styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Main screen styles */
+.mainscreen {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #DFDBE5 url("https://static.vecteezy.com/system/resources/previews/007/119/344/original/seamless-pattern-with-sea-turtle-sea-or-ocean-underwater-life-background-vector.jpg");
+    color: #1b47ad;
+}
+
+/* Card styles */
+.card {
+    width: 60rem;
+    margin: auto;
+    background: #ffffff;
+    position: center;
+    align-self: center;
+    border-radius: 1.5rem;
+    box-shadow: 4px 3px 20px rgba(53, 53, 53, 0.55);
+    display: flex;
+    flex-direction: row;
+}
+
+/* Left-side styles */
+.leftside {
+    background: #030303;
+    width: 25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1.5rem 0 0 1.5rem;
+}
+
+/* Product image styles */
+.product {
+    object-fit: cover;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+}
+
+/* Right-side styles */
+.rightside {
+    width: 35rem;
+    background: #ffffff;
+    padding: 1rem 2rem 3rem;
+    border-radius: 0 1.5rem 1.5rem 0;
+}
+
+/* Paragraph styles */
+p {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin: 0.8rem 0;
+}
+
+/* Input box styles */
+.inputbox {
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+    border-bottom: 1.5px solid #ccc;
+    margin-bottom: 1rem;
+    border-radius: 0.3rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    outline: none;
+    color: #615a5a;
+}
+
+/* Expiry and CVV section styles */
+.expcvv {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.6rem;
+}
+
+.expcvv_text {
+    padding-right: 1rem;
+}
+
+.expcvv_text2 {
+    padding: 0 1rem;
+}
+
+/* Button styles */
+.button {
+    background: linear-gradient(135deg, #12026b 0%, #27b7db 100%);
+    padding: 15px;
+    border: none;
+    border-radius: 50px;
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    width: 100%;
+    letter-spacing: 0.11rem;
+    outline: none;
+    font-weight: 400;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.button:hover {
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 3px 3px 6px rgba(56, 55, 55, 0.52);
+}
+
+/* Summary table styles */
+.summary-table{
+    background-color: #298096;
+}
+
+        @media only screen and (max-width: 800px) {
+            .card {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .leftside, .rightside {
+                width: 100%;
+                border-radius: 0; /* Remove border radius for mobile layout */
+            }
+
+            .rightside {
+                padding: 1rem; /* Reduce padding for mobile layout */
+            }
+
+            .product {
+                width: 100%;
+                max-width: 200px;
+                max-height: 200px;
+                border-radius: 0;
+                margin: 0 auto 1rem; /* Center the product image */
+            }
+
+            h1 {
+                font-size: 2rem;
+                text-align: center;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+                text-align: center;
+            }
+
+            p {
+                font-size: 1.1rem;
+                margin: 0.8rem 0;
+            }
+
+            .inputbox {
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+            }
+
+            .expcvv {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .expcvv_text,
+            .expcvv_text2 {
+                padding: 0;
+            }
+
+            .button {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainscreen">
+        <div class="card">
+            <div class="leftside">
+                <img src="https://media.istockphoto.com/id/1197971211/vector/vector-of-turtle-design-on-a-white-background-wild-animals-underwater-animal-turtle-icon-or.jpg?s=612x612&w=0&k=20&c=22VitoRuRVbvWbGTrd6ewdEu1G1b3cw_stBvA7-BevQ="
+                    class="product" alt="turtle" />
+            </div>
+            <div class="rightside">
+                <form action="confirm.html" id="paymentForm">
+                    <h1>CheckOut</h1>
+                    <h2>Payment Information</h2>
+                    <p>Cardholder Name</p>
+                    <input type="text" class="inputbox" name="name" required />
+                    <p>Card Number</p>
+                    <input type="number" class="inputbox" name="card_number" id="card_number" required />
+                    <p>Card Type</p>
+                    <select class="inputbox" name="card_type" id="card_type" required>
+                        <option value="">--Select a Card Type--</option>
+                        <option value="Visa">Visa</option>
+                        <option value="RuPay">RuPay</option>
+                        <option value="MasterCard">MasterCard</option>
+                    </select>
+                    <div class="expcvv">
+                        <p class="expcvv_text">Expiry</p>
+                        <input type="date" class="inputbox" name="exp_date" id="exp_date" required />
+                        <p class="expcvv_text2">CVV</p>
+                        <input type="password" class="inputbox" name="cvv" id="cvv" required />
+                    </div>
+                    <p></p>
+                   <a href="confirm.html"> <button type="button" class="button" onclick="validateAndSubmit()">CheckOut</button></a>
+                </form>
+				
+            </div>
+        </div>
+    </div>
+<!-- Summary table to display the selected options and total payable -->
+        <div class="summary-table">
+           <center> <h2>Summary Table </h2></center>
+            <table id="payment-summary-table">
+                <!-- Summary table content will be updated dynamically by JavaScript -->
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function validateAndSubmit() {
+            var cardholderName = document.getElementsByName("name")[0].value;
+            var cardNumber = document.getElementById("card_number").value;
+
+            // Validate Cardholder Name: Must have at least 3 characters
+            if (cardholderName.length < 3) {
+                alert("Cardholder Name must have at least 3 characters.");
+                return;
+            }
+
+            // Validate Card Number: Must be exactly 16 digits long
+            if (cardNumber.length !== 16) {
+                alert("Card Number must be exactly 16 digits long.");
+                return;
+            }
+
+            // If the form is valid, submit the form
+            document.getElementById("paymentForm").submit();
+        }
+    document.addEventListener("DOMContentLoaded", function () {
+        // Retrieve the summary table data from the local storage
+        const storedSummaryTableData = localStorage.getItem("summaryTableData");
+        const summaryTableData = JSON.parse(storedSummaryTableData);
+
+        // Define variables for summary table data
+        const selectedDate = summaryTableData.selectedDate;
+        const duration = summaryTableData.duration;
+        const foreignerAdults = summaryTableData.foreignerAdults;
+        const foreignerChildren = summaryTableData.foreignerChildren;
+        const slAdults = summaryTableData.slAdults;
+        const slChildren = summaryTableData.slChildren;
+        const infants = summaryTableData.infants;
+        const totalPayable = summaryTableData.totalPayable;
+
+        // Populate the summary table on the payment.html page using the retrieved data
+        const summaryTable = document.getElementById("payment-summary-table");
+        
+    });
+</script><br>
+<table align="center"> <tr>
+    <td>Date:</td>
+    <td>${selectedDate}</td>
+</tr>
+<tr>
+    <td>Duration:</td>
+    <td>${duration}</td>
+</tr>
+<tr>
+    <td>Foreigner Adult:</td>
+    <td>${foreignerAdults}</td>
+</tr>
+<tr>
+    <td>Foreigner Child:</td>
+    <td>${foreignerChildren}</td>
+</tr>
+<tr>
+    <td>SL Adult:</td>
+    <td>${slAdults}</td>
+</tr>
+<tr>
+    <td>SL Child:</td>
+    <td>${slChildren}</td>
+</tr>
+<tr>
+    <td>Infant:</td>
+    <td>${infants}</td>
+</tr>
+<tr>
+    <td>Total Payable:</td>
+    <td>${totalPayable} USD</td>
+</tr></table><br>
+
+</body>
+
+</html>
